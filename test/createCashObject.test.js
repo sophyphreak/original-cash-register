@@ -31,15 +31,15 @@ describe('createCashObject()', () => {
     ];
     const cashObject = createCashObject(cashArray);
     expect(cashObject).to.eql({
-      penny: 1.01,
-      nickel: 2.05,
-      dime: 3.1,
-      quarter: 4.25,
+      penny: 101,
+      nickel: 41,
+      dime: 31,
+      quarter: 17,
       one: 90,
-      five: 55,
-      ten: 20,
-      twenty: 60,
-      oneHundred: 100
+      five: 11,
+      ten: 2,
+      twenty: 3,
+      oneHundred: 1
     });
   });
 });

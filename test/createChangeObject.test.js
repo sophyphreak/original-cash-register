@@ -5,27 +5,27 @@ const { createChangeArray } = require('../helpers/createChangeArray');
 describe('createChangeArray()', () => {
   it('should turn change object into change array', () => {
     const changeObject = {
-      penny: 1.01,
-      nickel: 2.05,
-      dime: 1.1,
-      quarter: 23.25,
-      one: 2,
+      penny: 101,
+      nickel: 205,
+      dime: 11,
+      quarter: 232,
+      one: 20,
       five: 10,
-      ten: 100,
-      twenty: 40,
-      oneHundred: 10
+      ten: 10,
+      twenty: 4,
+      oneHundred: 1
     };
     const changeArray = createChangeArray(changeObject);
     expect(changeArray).to.eql([
-      ['PENNY', 1.01],
-      ['NICKEL', 2.05],
-      ['DIME', 1.1],
-      ['QUARTER', 23.25],
-      ['ONE', 2],
-      ['FIVE', 10],
+      ['ONE HUNDRED', 100],
+      ['TWENTY', 80],
       ['TEN', 100],
-      ['TWENTY', 40],
-      ['ONE HUNDRED', 10]
+      ['FIVE', 50],
+      ['ONE', 20],
+      ['QUARTER', 58],
+      ['DIME', 1.1],
+      ['NICKEL', 10.25],
+      ['PENNY', 1.01]
     ]);
   });
 });
