@@ -29,6 +29,17 @@ describe('createCashObject()', () => {
       ['TWENTY', 60],
       ['ONE HUNDRED', 100]
     ];
-    const cashobject = createCashObject(cashArray);
+    const cashObject = createCashObject(cashArray);
+    expect(cashObject).to.eql({
+      penny: 1.01,
+      nickel: 2.05,
+      dime: 3.1,
+      quarter: 4.25,
+      one: 90,
+      five: 55,
+      ten: 20,
+      twenty: 60,
+      oneHundred: 100
+    });
   });
 });
