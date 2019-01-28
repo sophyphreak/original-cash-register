@@ -56,4 +56,59 @@ describe('checkCashRegister()', () => {
       ]
     });
   });
+  it('should return correct object with INSUFFICIENT FUNDS', () => {
+    const result = checkCashRegister(19.5, 20, [
+      ['PENNY', 0.01],
+      ['NICKEL', 0],
+      ['DIME', 0],
+      ['QUARTER', 0],
+      ['ONE', 0],
+      ['FIVE', 0],
+      ['TEN', 0],
+      ['TWENTY', 0],
+      ['ONE HUNDRED', 0]
+    ]);
+    expect(result).to.eql({ status: 'INSUFFICIENT_FUNDS', change: [] });
+  });
+  it('should return correct object with INSUFFICIENT FUNDS', () => {
+    const result = checkCashRegister(19.5, 20, [
+      ['PENNY', 0.01],
+      ['NICKEL', 0],
+      ['DIME', 0],
+      ['QUARTER', 0],
+      ['ONE', 1],
+      ['FIVE', 0],
+      ['TEN', 0],
+      ['TWENTY', 0],
+      ['ONE HUNDRED', 0]
+    ]);
+    expect(result).to.eql({ status: 'INSUFFICIENT_FUNDS', change: [] });
+  });
+  it('should return correct object with CLOSED and change', () => {
+    const result = checkCashRegister(19.5, 20, [
+      ['PENNY', 0.5],
+      ['NICKEL', 0],
+      ['DIME', 0],
+      ['QUARTER', 0],
+      ['ONE', 0],
+      ['FIVE', 0],
+      ['TEN', 0],
+      ['TWENTY', 0],
+      ['ONE HUNDRED', 0]
+    ]);
+    expect(result).to.eql({
+      status: 'CLOSED',
+      change: [
+        ['PENNY', 0.5],
+        ['NICKEL', 0],
+        ['DIME', 0],
+        ['QUARTER', 0],
+        ['ONE', 0],
+        ['FIVE', 0],
+        ['TEN', 0],
+        ['TWENTY', 0],
+        ['ONE HUNDRED', 0]
+      ]
+    });
+  });
 });
