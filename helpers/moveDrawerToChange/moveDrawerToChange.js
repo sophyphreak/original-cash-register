@@ -1,11 +1,11 @@
 const { createCashObject } = require('../createCashObject');
 
-const moveDrawerToChange = (changeRequired, cidObject) => {
+const moveDrawerToChange = (changeRequired, cashInDrawerObject) => {
   let changeAmount = 0;
   let changeObject = createCashObject();
   while ((changeRequired - changeAmount) / 100 >= 1) {
-    if (cidObject.oneHundred > 0) {
-      cidObject.oneHundred--;
+    if (cashInDrawerObject.oneHundred > 0) {
+      cashInDrawerObject.oneHundred--;
       changeObject.oneHundred++;
       changeAmount += 100;
     } else {
@@ -13,8 +13,8 @@ const moveDrawerToChange = (changeRequired, cidObject) => {
     }
   }
   while ((changeRequired - changeAmount) / 20 >= 1) {
-    if (cidObject.twenty > 0) {
-      cidObject.twenty--;
+    if (cashInDrawerObject.twenty > 0) {
+      cashInDrawerObject.twenty--;
       changeObject.twenty++;
       changeAmount += 20;
     } else {
@@ -22,8 +22,8 @@ const moveDrawerToChange = (changeRequired, cidObject) => {
     }
   }
   while ((changeRequired - changeAmount) / 10 >= 1) {
-    if (cidObject.ten > 0) {
-      cidObject.ten--;
+    if (cashInDrawerObject.ten > 0) {
+      cashInDrawerObject.ten--;
       changeObject.ten++;
       changeAmount += 10;
     } else {
@@ -31,8 +31,8 @@ const moveDrawerToChange = (changeRequired, cidObject) => {
     }
   }
   while ((changeRequired - changeAmount) / 5 >= 1) {
-    if (cidObject.five > 0) {
-      cidObject.five--;
+    if (cashInDrawerObject.five > 0) {
+      cashInDrawerObject.five--;
       changeObject.five++;
       changeAmount += 5;
     } else {
@@ -40,8 +40,8 @@ const moveDrawerToChange = (changeRequired, cidObject) => {
     }
   }
   while ((changeRequired - changeAmount) / 1 >= 1) {
-    if (cidObject.one > 0) {
-      cidObject.one--;
+    if (cashInDrawerObject.one > 0) {
+      cashInDrawerObject.one--;
       changeObject.one++;
       changeAmount += 1;
     } else {
@@ -49,8 +49,8 @@ const moveDrawerToChange = (changeRequired, cidObject) => {
     }
   }
   while ((changeRequired - changeAmount) / 0.25 >= 1) {
-    if (cidObject.quarter > 0) {
-      cidObject.quarter--;
+    if (cashInDrawerObject.quarter > 0) {
+      cashInDrawerObject.quarter--;
       changeObject.quarter++;
       changeAmount += 0.25;
     } else {
@@ -58,8 +58,8 @@ const moveDrawerToChange = (changeRequired, cidObject) => {
     }
   }
   while ((changeRequired - changeAmount) / 0.1 >= 1) {
-    if (cidObject.dime > 0) {
-      cidObject.dime--;
+    if (cashInDrawerObject.dime > 0) {
+      cashInDrawerObject.dime--;
       changeObject.dime++;
       changeAmount += 0.1;
     } else {
@@ -67,8 +67,8 @@ const moveDrawerToChange = (changeRequired, cidObject) => {
     }
   }
   while ((changeRequired - changeAmount) / 0.05 >= 1) {
-    if (cidObject.nickel > 0) {
-      cidObject.nickel--;
+    if (cashInDrawerObject.nickel > 0) {
+      cashInDrawerObject.nickel--;
       changeObject.nickel++;
       changeAmount += 0.05;
     } else {
@@ -76,8 +76,8 @@ const moveDrawerToChange = (changeRequired, cidObject) => {
     }
   }
   while (changeRequired - changeAmount > 0) {
-    if (cidObject.penny > 0) {
-      cidObject.penny--;
+    if (cashInDrawerObject.penny > 0) {
+      cashInDrawerObject.penny--;
       changeObject.penny++;
       changeAmount += 0.01;
     } else {
@@ -87,15 +87,15 @@ const moveDrawerToChange = (changeRequired, cidObject) => {
   if (changeRequired - changeAmount > 0) {
     return 'INSUFFICIENT_FUNDS';
   } else if (
-    cidObject.penny === 0 &&
-    cidObject.nickel === 0 &&
-    cidObject.dime === 0 &&
-    cidObject.quarter === 0 &&
-    cidObject.one === 0 &&
-    cidObject.five === 0 &&
-    cidObject.ten === 0 &&
-    cidObject.twenty === 0 &&
-    cidObject.oneHundred === 0
+    cashInDrawerObject.penny === 0 &&
+    cashInDrawerObject.nickel === 0 &&
+    cashInDrawerObject.dime === 0 &&
+    cashInDrawerObject.quarter === 0 &&
+    cashInDrawerObject.one === 0 &&
+    cashInDrawerObject.five === 0 &&
+    cashInDrawerObject.ten === 0 &&
+    cashInDrawerObject.twenty === 0 &&
+    cashInDrawerObject.oneHundred === 0
   ) {
     return 'CLOSED';
   } else {

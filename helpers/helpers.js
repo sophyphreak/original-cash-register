@@ -1,5 +1,8 @@
-const cashSimplyNotEnough = (changeRequired, cid) => {
-  const totalCashInDrawer = cid.reduce((sum, current) => sum + current[1], 0);
+const cashSimplyNotEnough = (changeRequired, cashInDrawer) => {
+  const totalCashInDrawer = cashInDrawer.reduce(
+    (sum, current) => sum + current[1],
+    0
+  );
   if (changeRequired > totalCashInDrawer) {
     return true;
   }
@@ -11,9 +14,9 @@ const makeInsufficientFundsObject = () => ({
   change: []
 });
 
-const makeCashRegisterClosedObject = cid => ({
+const makeCashRegisterClosedObject = cashInDrawer => ({
   status: 'CLOSED',
-  change: cid
+  change: cashInDrawer
 });
 
 module.exports = {

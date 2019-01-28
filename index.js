@@ -9,17 +9,16 @@ const {
   moveDrawerToChange
 } = require('./helpers/moveDrawerToChange/moveDrawerToChange');
 
-const checkCashRegister = (price, cash, cid) => {
-  // cid is "cash in drawer"
+const checkCashRegister = (price, cash, cashInDrawer) => {
   const changeRequired = cash - price;
   const insufficientFundsObject = makeInsufficientFundsObject();
-  const cashRegisterClosedObject = makeCashRegisterClosedObject(cid);
-  if (cashSimplyNotEnough(changeRequired, cid)) {
-    // if the sum of cid is less than change required
+  const cashRegisterClosedObject = makeCashRegisterClosedObject(cashInDrawer);
+  if (cashSimplyNotEnough(changeRequired, cashInDrawer)) {
+    // if the sum of cashInDrawer is less than change required
     return insufficientFundsObject;
   }
-  let cidObject = createCashObject(cid);
-  const changeObject = moveDrawerToChange(changeRequired, cidObject);
+  let cashInDrawerObject = createCashObject(cashInDrawer);
+  const changeObject = moveDrawerToChange(changeRequired, cashInDrawerObject);
   if (changeObject === 'INSUFFICIENT_FUNDS') {
     return insufficientFundsObject;
   } else if (changeObject === 'CLOSED') {
@@ -32,31 +31,6 @@ const checkCashRegister = (price, cash, cid) => {
     };
   }
 };
-
-// Example cash-in-drawer array:
-// [["PENNY", 1.01],
-// ["NICKEL", 2.05],
-// ["DIME", 3.1],
-// ["QUARTER", 4.25],
-// ["ONE", 90],
-// ["FIVE", 55],
-// ["TEN", 20],
-// ["TWENTY", 60],
-// ["ONE HUNDRED", 100]]
-
-// console.log(
-//   checkCashRegister(3.26, 100, [
-//     ['PENNY', 1.01],
-//     ['NICKEL', 2.05],
-//     ['DIME', 3.1],
-//     ['QUARTER', 4.25],
-//     ['ONE', 90],
-//     ['FIVE', 55],
-//     ['TEN', 20],
-//     ['TWENTY', 60],
-//     ['ONE HUNDRED', 100]
-//   ])
-// );
 
 module.exports = {
   checkCashRegister

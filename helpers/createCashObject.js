@@ -1,5 +1,5 @@
 const createCashObject = (
-  cid = [
+  cashInDrawer = [
     ['PENNY', 0],
     ['NICKEL', 0],
     ['DIME', 0],
@@ -12,15 +12,15 @@ const createCashObject = (
   ]
 ) => {
   let result = {
-    penny: cid[0][1] * 100,
-    nickel: cid[1][1] * 20,
-    dime: cid[2][1] * 10,
-    quarter: cid[3][1] * 4,
-    one: cid[4][1],
-    five: cid[5][1] / 5,
-    ten: cid[6][1] / 10,
-    twenty: cid[7][1] / 20,
-    oneHundred: cid[8][1] / 100
+    penny: cashInDrawer[0][1] * 100,
+    nickel: cashInDrawer[1][1] * 20,
+    dime: cashInDrawer[2][1] * 10,
+    quarter: cashInDrawer[3][1] * 4,
+    one: cashInDrawer[4][1],
+    five: cashInDrawer[5][1] / 5,
+    ten: cashInDrawer[6][1] / 10,
+    twenty: cashInDrawer[7][1] / 20,
+    oneHundred: cashInDrawer[8][1] / 100
   };
   return result;
 };
