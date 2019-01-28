@@ -11,7 +11,13 @@ const makeInsufficientFundsObject = () => ({
   change: []
 });
 
+const makeCashRegisterClosedObject = cid => ({
+  status: 'CLOSED',
+  change: cid
+});
+
 module.exports = {
   cashSimplyNotEnough,
-  makeInsufficientFundsObject
+  makeInsufficientFundsObject,
+  makeCashRegisterClosedObject
 };

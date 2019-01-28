@@ -86,4 +86,21 @@ const moveDrawerToChange = (changeRequired, cidObject) => {
       }
     }
   }
+  if (changeAmount > 0) {
+    return 'INSUFFICIENT_FUNDS';
+  } else if (
+    cidObject.penny === 0 &&
+    cidObject.nickel === 0 &&
+    cidObject.dime === 0 &&
+    cidObject.quarter === 0 &&
+    cidObject.one === 0 &&
+    cidObject.five === 0 &&
+    cidObject.ten === 0 &&
+    cidObject.twenty === 0 &&
+    cidObject.oneHundred === 0
+  ) {
+    return 'CLOSED';
+  } else {
+    return changeObject;
+  }
 };

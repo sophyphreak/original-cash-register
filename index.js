@@ -8,16 +8,28 @@ const {
   moveDrawerToChange
 } = require('./helpers/moveDrawerToChange/moveDrawerToChange');
 
-checkCashRegister = (price, cash, cid) => {
+const checkCashRegister = (price, cash, cid) => {
   // cid is "cash in drawer"
   const changeRequired = cash - price;
-  const insufficentFundsObject = makeInsufficientFundsObject();
+  const insufficientFundsObject = makeInsufficientFundsObject();
+  const cashRegisterClosedObject = makeCashRegisterClosedObject(cid);
   if (cashSimplyNotEnough(changeRequired, cid)) {
     // if the sum of cid is less than change required
     return insufficentFundsObject;
   }
   let cidObject = createCashObject(cid);
   const changeObject = moveDrawerToChange(changeRequired, cidObject);
+  if (changeObject === 'INSUFFICIENT_FUNDS') {
+    return insufficientFundsObject;
+  } else if (changeObject === 'CLOSED') {
+    return cashRegisterClosedObject;
+  } else {
+    const changeArray = createChangeArray(changeObject);
+    return {
+      status: 'OPEN',
+      change: changeArray
+    };
+  }
 };
 
 // Example cash-in-drawer array:
