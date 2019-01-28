@@ -1,14 +1,14 @@
 const createChangeArray = cidObject => {
   let result = [
-    ['PENNY', cidObject.penny],
-    ['NICKEL', cidObject.nickel],
-    ['DIME', cidObject.dime],
-    ['QUARTER', cidObject.quarter],
+    ['PENNY', cidObject.penny / 100],
+    ['NICKEL', cidObject.nickel / 20],
+    ['DIME', cidObject.dime / 10],
+    ['QUARTER', cidObject.quarter / 4],
     ['ONE', cidObject.one],
-    ['FIVE', cidObject.five],
-    ['TEN', cidObject.ten],
-    ['TWENTY', cidObject.twenty],
-    ['ONE HUNDRED', cidObject.oneHundred]
+    ['FIVE', cidObject.five * 5],
+    ['TEN', cidObject.ten * 10],
+    ['TWENTY', cidObject.twenty * 20],
+    ['ONE HUNDRED', cidObject.oneHundred * 100]
   ];
   return result;
 };
