@@ -75,7 +75,7 @@ const moveDrawerToChange = (changeRequired, cidObject) => {
       break;
     }
   }
-  while ((changeRequired - changeAmount) / 0.01 >= 1) {
+  while (changeRequired - changeAmount > 0) {
     if (cidObject.penny > 0) {
       cidObject.penny--;
       changeObject.penny++;
